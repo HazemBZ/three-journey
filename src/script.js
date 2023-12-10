@@ -31,37 +31,20 @@ loadingManager.onError = () => {
 
 const textureLoader = new THREE.TextureLoader(loadingManager);
 
-const doorColorTexture = textureLoader.load("/textures/door/color.jpg");
+// const doorColorTexture = textureLoader.load("/textures/door/color.jpg");
 // const doorColorTexture = textureLoader.load(
 //   "/textures/checkerboard-1024x1024.png"
 // );
 
-doorColorTexture.colorSpace = THREE.SRGBColorSpace;
+/// Filters --> sampling texture to match texture to object size non coresspondance?
+// const doorColorTexture = textureLoader.load("/textures/checkerboard-8x8.png");
+// doorColorTexture.magFilter = THREE.NearestFilter; // Good showcase for magFilter
 
-// Texture repeats
-doorColorTexture.repeat.x = 4;
-doorColorTexture.repeat.y = 2;
-// (not set by default)
-doorColorTexture.wrapS = THREE.RepeatWrapping;
-doorColorTexture.wrapT = THREE.RepeatWrapping;
+/// filter/mip map defaults to 'THREE.LinearMipmapLinearFilter'
+// doorColorTexture.minFilter = THREE.NearestFilter;
 
-//---------- 3fas ----------
-// Mirrored repeats
-doorColorTexture.wrapS = THREE.MirroredRepeatWrapping;
-doorColorTexture.wrapT = THREE.MirroredRepeatWrapping;
-
-// Texture offset
-doorColorTexture.offset.x = 0.5;
-doorColorTexture.offset.y = 0.2;
-
-// Texture rotation
-doorColorTexture.rotation = Math.PI * 0.25; // rotates around the (0, 0) UV coordinates (pivot )
-
-// Texture center/pivot
-doorColorTexture.center.x = 0.5;
-doorColorTexture.center.y = 0.5;
-// filtering/min-mapping
-doorColorTexture.minFilter = THREE.NearestMipmapNearestFilter;
+const doorColorTexture = textureLoader.load("/textures/minecraft.png");
+doorColorTexture.magFilter = THREE.NearestFilter; // Good showcase for magFilter
 
 // const alphaTexture = textureLoader.load('/textures/door/alpha.jpg')
 // const heightTexture = textureLoader.load('/textures/door/height.jpg')
